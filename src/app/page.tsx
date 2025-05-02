@@ -2,6 +2,7 @@
 import { UserButton } from "@/features/auth/components/user-button";
 import { useGetWorkspaces } from "@/features/workspaces/api/use-get-workspaces";
 import { useCreateWorkspaceModal } from "@/features/workspaces/store/use-create-workspace-modal";
+import { Loader } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { useEffect, useMemo } from "react";
 
@@ -19,5 +20,9 @@ export default function Home() {
       console.log("Open creating modal");
     }
   }, [isLoading, workspaceId, open, setOpen, router]);
-  return <UserButton />;
+  return (
+    <div className="flex flex-col bg-[#5e2c5f] h-full items-center justify-center">
+      <Loader className=" size animate-spin text-white" />
+    </div>
+  );
 }
